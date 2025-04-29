@@ -34,9 +34,6 @@ class MainActivity : AppCompatActivity() {
         val shareButton: Button = findViewById(R.id.share_text_button)
         shareButton.setOnClickListener{
             val text = shareEdit.text.toString()
-            Log.v("cek string", text)
-            Toast.makeText(applicationContext, text, Toast.LENGTH_SHORT).show()
-            shareText(text)
         }
 
         val implicitEdit: EditText = findViewById(R.id.implicit_edit_text)
@@ -70,6 +67,9 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(Intent.ACTION_SEND)
         intent.type = "text/plain"
         intent.putExtra(Intent.EXTRA_TEXT, text)
+        Log.v("cek string", text)
+        Toast.makeText(applicationContext, text, Toast.LENGTH_SHORT).show()
+        shareText(text)
         startActivity(Intent.createChooser(intent, "Share Text"))
     }
     private fun sendData(text: String) {
